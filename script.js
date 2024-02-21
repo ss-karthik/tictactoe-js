@@ -1,3 +1,8 @@
+const startButton = document.getElementById('start');
+startButton.addEventListener('click', function() {
+	gameControl.start();	
+});
+
 function createPlayer (name, team) {
 	return {name, team};
 };
@@ -46,6 +51,7 @@ const gameControl = (() => {
 		const player2 = createPlayer("p2", "O");
 		gameboard.printBoard();
 		displayTurn();
+		display.displayGrid();
 	}
 
 	const displayTurn = () => {
@@ -56,7 +62,7 @@ const gameControl = (() => {
 			if(gameover){
 				return;
 			}
-			gameboard.setValue(row, col, turn);
+			gameboard.setValue(row, col, turn);				
 			gameboard.printBoard();
 			
 			if(checkwin(gameboard.board) === true) {
@@ -77,6 +83,46 @@ const gameControl = (() => {
 
 	return { start, play };
 
+})();
+
+const display = (() => {
+	function displayGrid() {
+		const grid = document.querySelector('.grid-container');
+		grid.innerHTML = '';
+		for(let i=0; i<3; i++) {
+			let row = document.createElement('div');
+			row.classList.add('row-container');
+			for(let j=0; j<3; j++) {
+				let cell = document.createElement('div');
+				cell.classList.add('cell');
+				cell.classList.add(i);
+				cell.classList.add(j);
+				cell.addEventListener('click', function(e) {
+					sendValue(e);
+				})
+				cell.innerHTML = gameboard.board[i][j];
+				row.appendChild(cell);
+			}
+			grid.appendChild(row);
+		}
+	}
+	function sendValue(e) {
+		let row = parseInt(e.target.classList[1]);
+		let col = parseInt(e.target.classList[2]);
+		if(e.target.innerHTML === ' ') {
+			console.log(row);
+			console.log(col);
+			gameControl.play(row, col);
+			displayGrid();
+		} else {
+			alert('INVALID MOVE!');
+		}
+	}
+	function declare() {
+		
+	}
+
+	return { displayGrid };
 })();
 
 

@@ -1,0 +1,26 @@
+body {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+}
+
+.row-container {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.grid-container {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.cell {
+	width: 120px;
+	background-color: green;
+	height: 120px;
+}
