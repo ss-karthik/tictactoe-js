@@ -95,8 +95,7 @@ const display = (() => {
 			for(let j=0; j<3; j++) {
 				let cell = document.createElement('div');
 				cell.classList.add('cell');
-				cell.classList.add(i);
-				cell.classList.add(j);
+				cell.classList.add(`${i}${j}`);
 				cell.addEventListener('click', function(e) {
 					sendValue(e);
 				})
@@ -107,12 +106,12 @@ const display = (() => {
 		}
 	}
 	function sendValue(e) {
-		let row = parseInt(e.target.classList[1]);
-		let col = parseInt(e.target.classList[2]);
+		let str = e.target.classList[1];
+		let arr = str.split('');
 		if(e.target.innerHTML === ' ') {
-			console.log(row);
-			console.log(col);
-			gameControl.play(row, col);
+			console.log(arr[0]);
+			console.log(arr[1]);
+			gameControl.play(arr[0], arr[1]);
 			displayGrid();
 		} else {
 			alert('INVALID MOVE!');
