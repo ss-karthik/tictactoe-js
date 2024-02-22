@@ -1,9 +1,17 @@
+* {
+	font-family: Roboto;
+}
+
 body {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
 	gap: 30px;
+}
+
+h1 {
+	font-size: 30px;
 }
 
 .row-container {
@@ -21,6 +29,29 @@ body {
 
 .cell {
 	width: 120px;
-	background-color: green;
+	background-color: #E7F9A9;
 	height: 120px;
+	font-size: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+
+form input {
+	font-size: 20px;
+}
+
+form button {
+	font-size: 20px;
+}
+
+#start {
+	font-size: 20px;
 }
